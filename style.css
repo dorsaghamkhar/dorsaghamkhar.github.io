@@ -1,0 +1,100 @@
+/* Layout: Google-Sites-style academic site. Top bar with name and page links; one centered reading column per page. */
+:root{
+  --bg:#FFFFFF; --band:#F3F5F8; --ink:#1B2430; --muted:#5B6675; --rule:#E2E6EC;
+  --accent:#1F4E79; --accent-ink:#FFFFFF;
+  --display:"Lato", "Helvetica Neue", Arial, sans-serif;
+  --body:"Lato", "Helvetica Neue", Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.inner{max-width:1040px;margin:0 auto;
+  padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+
+/* Top bar */
+header{border-bottom:1px solid var(--rule);background:var(--bg)}
+header .inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;padding-block:22px}
+.brand{font-family:var(--display);font-weight:300;font-size:26px;letter-spacing:.01em;color:var(--ink);text-decoration:none}
+nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 28px}
+nav a{color:var(--muted);text-decoration:none;font-size:18px;font-weight:400;padding-bottom:4px;border-bottom:2px solid transparent}
+nav a:hover{color:var(--ink)}
+nav a[aria-current="page"]{color:var(--ink);font-weight:700}
+
+main .inner{padding-block:56px 72px;display:flex;flex-direction:column;gap:48px}
+
+/* Home */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) clamp(150px,32%,340px);gap:clamp(20px,4vw,56px);align-items:start}
+.hero-text{min-width:0;container-type:inline-size}
+.photo{width:100%;max-width:100%;aspect-ratio:2/3;overflow:hidden;background:var(--band)}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+h1{font-family:var(--display);font-weight:300;font-size:min(42px,8cqi);white-space:nowrap;line-height:1.15;margin:8px 0 22px;letter-spacing:-.01em;text-wrap:balance}
+h1 b{font-weight:700}
+.hero p{margin:0 0 14px;max-width:62ch;text-align:justify;hyphens:auto}
+.hero .contact p{text-align:left}
+.market{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:14px;letter-spacing:.04em;padding:6px 14px;border-radius:3px;margin-bottom:18px}
+.contact{display:flex;flex-direction:column;gap:6px;margin:26px 0 22px;font-size:16px}
+.contact h2{font-size:22px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--ink);margin:0 0 4px}
+.contact p{margin:0;max-width:62ch}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:700;font-size:15px;padding:10px 22px;border-radius:3px;margin-top:6px}
+.btn:hover{filter:brightness(1.15)}
+
+/* Sections */
+h2{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0}
+.section{display:flex;flex-direction:column;gap:22px}
+.section > h2{padding-bottom:10px;border-bottom:1px solid var(--rule)}
+.page-title{font-size:36px;margin:0}
+
+/* Papers */
+.paper{display:flex;flex-direction:column;gap:8px;container-type:inline-size}
+.paper h3{white-space:nowrap;font-size:min(24px,2.25cqi)!important}
+.paper h3{font-family:var(--display);font-weight:700;font-size:21px;line-height:1.35;margin:0;text-wrap:balance}
+.label{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:1px 8px;align-self:flex-start}
+.with{color:var(--muted);margin:0}
+.abstract{margin:0;max-width:70ch;text-align:justify;hyphens:auto}
+.abstract b{font-weight:700}
+/* conference list under each paper, always visible */
+.pres{margin-top:6px}
+.pres h4{margin:0 0 4px;font-size:15px;font-weight:700;color:var(--ink)}
+.pres ul{margin:0;padding-left:20px;font-size:15px;color:var(--muted)}
+.pres li{margin-bottom:3px;break-inside:avoid}
+details summary{cursor:pointer;color:var(--accent);font-weight:700;font-size:15px;width:fit-content}
+details ul{margin:10px 0 0;padding-left:20px;font-size:15px;color:var(--muted)}
+details li{margin-bottom:2px}
+
+/* Lists with years */
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:baseline;padding-bottom:10px;border-bottom:1px solid var(--rule)}
+.list .when{color:var(--muted);font-size:15px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.list small{display:block;color:var(--muted);font-size:15px}
+
+/* Photo banner on inner pages. Put a wide photo at files/banner.jpg (about 2000 x 600 px); until then the band shows solid navy. */
+.banner{background:linear-gradient(rgba(14,30,52,.55), rgba(14,30,52,.55)), url("files/banner.jpg") center/cover no-repeat, #1F4E79;
+  color:#FFFFFF}
+.banner .inner{padding-block:84px 72px;display:flex;flex-direction:column;gap:10px}
+.banner h1{font-family:var(--display);font-weight:300;font-size:48px;line-height:1.1;margin:0;color:#FFFFFF;letter-spacing:.01em}
+.banner p{margin:0;font-size:16px;color:rgba(255,255,255,.88);max-width:62ch}
+@media (max-width:560px){
+  .hero{grid-template-columns:minmax(0,1fr);gap:28px}
+  .photo{order:-1;width:220px;aspect-ratio:3/4}
+}
+@media (max-width:720px){ .banner .inner{padding-block:52px 44px} .banner h1{font-size:36px} }
+
+/* References */
+.refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+.ref{background:var(--band);border-radius:4px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ref h3{font-family:var(--display);font-weight:700;font-size:20px;margin:0}
+.ref p{margin:0;font-size:15px;line-height:1.55}
+.ref .mail{color:var(--accent);word-break:break-word}
+
+footer{border-top:1px solid var(--rule);color:var(--muted);font-size:14px}
+footer .inner{padding-block:24px}
+
+@media (max-width:720px){
+  .paper h3{white-space:normal;font-size:19px!important}
+  main .inner{padding-block:36px 56px}
+  .list li{grid-template-columns:minmax(0,1fr);gap:2px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
